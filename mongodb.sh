@@ -2,9 +2,11 @@
 
 ID=$(id -u)
 
-echo " $0 is started"
+
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
+
+echo "$0 shell script start time $TIMESTAMP"
 
 R="\e[31m"
 G="\e[32m"
