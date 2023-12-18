@@ -14,28 +14,28 @@ N="\e[0m"
 validate(){
     if [ $1 -ne 0 ]
     then
-        echo  -e " $R  $2 ... error $N"
+        echo  -e "$R $2 ... error $N"
     else
-        echo  -e " $G  $2 ... success $N"
+        echo  -e "$G $2 ... success $N"
     fi
 }
 
 
 if [ $ID -ne 0 ]
 then
-    echo  "please install with root user"
+    echo "please install with root user"
     exit 1
 else
-    echo  "you are root user"
+    echo "you are root user"
 fi
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo
 
-validate $? " coping mongo repo"
+validate $? "coping mongo repo"
 
 dnf install mongodb-org -y  &>> $LOGFILE
 
-validate $? " installing mongodb"
+validate $? "installing mongodb"
 
 systemctl enable mongod &>> $LOGFILE
 
