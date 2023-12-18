@@ -1,6 +1,6 @@
 #1/bin/bash
 
-ID=(id -u)
+ID=$(id -u)
 
 echo " $0 is started"
 TIMESTAMP=$(date +%F-%H-%M-%S)
@@ -14,9 +14,9 @@ N="\e[0m"
 validate(){
     if [ $1 -ne 0 ]
     then
-        echo : -e " $R  $2 error $N"
+        echo : -e " $R ... $2 error $N"
     else
-        echo : " $G  $2 success $N"
+        echo : -e " $G ... $2 success $N"
     fi
 }
 
@@ -30,6 +30,8 @@ else
 fi
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo
+
+validate $? " coping mongo repo"
 
 dnf install mongodb-org -y  &>> $LOGFILE
 
