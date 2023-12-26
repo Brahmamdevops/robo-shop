@@ -6,7 +6,7 @@ INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipp
 ZONE_ID=Z015866725GKGKSNADT5C
 DOMAIN_NAME="mvaws.online"
 
-for i on "${INSTANCES[@]}"
+for i in "${INSTANCES[@]}"
 do
     if [ $i == "mongodb"] || [ $i == "mysql"] || [ $i == "shipping"]
         INSTANCE_TYPE="t3.small"
